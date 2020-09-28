@@ -17,4 +17,4 @@ class TestLab1(TestCase):
         self.assertEqual('bi**le', replace_char('bibble'))
 
     def test_str_mix(self):
-        self.assertEqual('bbc aca', str_mix('abc', 'bca'))
+        self.assertEqual('bcc aba', str_mix('abc', 'bca'))

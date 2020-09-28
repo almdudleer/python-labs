@@ -36,4 +36,4 @@ def replace_char(s) -> str:
 # Т.е. 'max', pid' -> 'pix mad'
 # 'dog', 'dinner' -> 'dig donner'
 def str_mix(a, b) -> str:
-    return f'{b[0] + a[1:]} {a[0] + b[1:]}'
+    return f'{b[0:2] + a[2:]} {a[0:2] + b[2:]}'
