@@ -6,6 +6,7 @@ import re
 # если в конце нет уже "ing", иначе добавить "ly".
 def ingify(string: str) -> str:
     if len(string) > 3:
+
         return string + "ing" if string.endswith("ing") else string + "ly"
     return string
 
