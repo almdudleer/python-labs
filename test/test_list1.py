@@ -30,13 +30,13 @@ class TestLab1(TestCase):
         self.assertEqual(expected, me(input_list))
 
     def test_fx(self):
-        input_list = ['tix', 'xyz', 'apple', 'xacadu', 'aabbbccc']
-        expected_list = ['xacadu', 'xyz', 'aabbbccc', 'apple', 'tix']
+        input_list = ["tix", "xyz", "apple", "xacadu", "aabbbccc"]
+        expected_list = ["xacadu", "xyz", "aabbbccc", "apple", "tix"]
         self.assertEqual(expected_list, fx(input_list))
 
     def test_fx_empty_str(self):
-        input_list = ['', 'xyz', 'apple', 'xacadu', 'aabbbccc']
-        expected_list = ['xacadu', 'xyz', '', 'aabbbccc', 'apple']
+        input_list = ["", "xyz", "apple", "xacadu", "aabbbccc"]
+        expected_list = ["xacadu", "xyz", "", "aabbbccc", "apple"]
         self.assertEqual(expected_list, fx(input_list))
 
     def test_sort_tuples(self):

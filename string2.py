@@ -16,5 +16,6 @@ def ingify(string: str) -> str:
 # на 'good'.
 # Пример: So 'This music is not so bad!' -> This music is good!
 
+
 def not_bad(string: str) -> str:
-    return re.sub(r'not.*bad', 'good', string)
+    return re.sub(r"not.*bad", "good", string)
