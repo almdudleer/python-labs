@@ -1,0 +1,39 @@
+<div class="content-container">
+  <nav class="sidenav rss-sidenav">
+    <div class="add-form">
+      <input clrInput
+             placeholder="RSS Feed"
+             name="searchString"
+             [(ngModel)]="rssUrl"
+             (keydown.enter)="addNewFeed()"/>
+      <button type="button"
+              class="btn btn-icon add-btn"
+              (click)="addNewFeed()">
+        <clr-icon shape="plus"></clr-icon>
+        Добавить
+      </button>
+    </div>
+    <input clrInput
+           placeholder="Search"
+           name="searchString"
+           [(ngModel)]="searchString"
+           (keydown.enter)="search()"/>
+    <section class="sidenav-content">
+      <ng-container *ngFor="let feed of feeds">
+        <a [routerLink]="feed._id" routerLinkActive="active" class="card clickable feed-card">
+          <div class="card-img">
+            <img [src]="feed.image" (error)="fallbackToDefaultImage($event)"/>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              {{feed.title}}
+            </p>
+          </div>
+        </a>
+      </ng-container>
+    </section>
+  </nav>
+  <div class="content-area">
+    <router-outlet></router-outlet>
+  </div>
+</div>

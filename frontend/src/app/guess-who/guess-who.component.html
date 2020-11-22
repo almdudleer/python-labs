@@ -1,0 +1,17 @@
+<div class="clr-row clr-justify-content-center guess-container">
+  <div [ngSwitch]="step" class="clr-col-lg-4">
+    <ng-container *ngSwitchCase="0">
+      <button class="btn btn-primary margin-top" (click)="newGame()">Начать игру</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="1">
+      <div *ngIf="task">
+        <img [src]="task.image" class="task-img">
+        <button *ngFor="let name of task.names" class="btn btn-outline" (click)=answer(name)>{{name}}</button>
+      </div>
+    </ng-container>
+    <div *ngSwitchCase="2" class='margin-top'>
+      {{result}}
+      <button class="btn btn-primary" (click)="newGame()">Начать снова</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<button type="button"
+        class="btn btn-icon refresh-btn"
+        (click)="refresh()">
+  <clr-icon shape="refresh"></clr-icon>
+  Обновить
+</button>
+<div class="card-columns">
+  <ng-container *ngFor="let entry of entries">
+    <a [href]="entry.href" class="card card-block clickable">
+      <h3 class="card-title">{{entry.title}} ({{entry.published | date : 'medium'}})</h3>
+      <div class="card-img" *ngIf="entry.image">
+        <img [src]="entry.image">
+      </div>
+      <div class="card-block">
+        <p class="card-text" [innerHTML]="entry.summary">
+        </p>
+      </div>
+    </a>
+  </ng-container>
+</div>
+
+<div class="clr-row clr-justify-content-center ">
+  <button type="button"
+          class="btn clr-col-lg-4"
+          (click)="loadNewPage()">
+    Загрузить еще
+  </button>
+</div>
