@@ -31,7 +31,7 @@ export class GuessWhoComponent implements OnInit {
   answer(name: string): void {
     this.step = 2;
     this.guessService.checkAnswer(this.task.id, name).subscribe(res => {
-      this.result = res ? 'Всё верно!' : 'Вы ошиблись!';
+      this.result = res.result ? 'Всё верно!' : 'Вы ошиблись! Правильный ответ: ' + res.answer;
     }, err => {
       this.result = 'Время вышло!'
     })

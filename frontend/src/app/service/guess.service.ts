@@ -18,7 +18,7 @@ export class GuessService {
     return this.http.get<Task>(this.url);
   }
 
-  public checkAnswer(taskId: string, answer: string): Observable<boolean> {
-    return this.http.post<boolean>(this.url, {taskId, answer});
+  public checkAnswer(taskId: string, answer: string): Observable<any> {
+    return this.http.post<any>(this.url, {taskId, answer});
   }
 }

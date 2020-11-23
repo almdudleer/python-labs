@@ -24,6 +24,7 @@ class Guess(Resource):
         }, headers={
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
         })
+        print(r.json())
         image = random.choice(r.json()['data']['result']['items'])['media']
         insert_result = mongo.db.guess.insert_one({
             'createdAt': datetime.utcnow(),
@@ -41,8 +42,13 @@ class Guess(Resource):
         task = mongo.db.guess.find_one({'_id': ObjectId(body['taskId'])})
         if task is not None:
             if task['answer'] == body['answer']:
-                return True
+                return {
+                    'result': True
+                }
             else:
-                return False
+                return {
+                    'result': False,
+                    'answer': task['answer']
+                }
         else:
             return None, 404
