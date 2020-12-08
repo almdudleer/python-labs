@@ -1,16 +1,52 @@
 <div class="clr-row clr-justify-content-center guess-container">
   <div [ngSwitch]="step" class="clr-col-lg-4">
     <ng-container *ngSwitchCase="0">
+      <clr-radio-container clrInline>
+        <label>Уровень сложности</label>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="4" [(ngModel)]="options"/>
+          <label>Легкий</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="10" [(ngModel)]="options"/>
+          <label>Средний</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="20" [(ngModel)]="options"/>
+          <label>Сложный</label>
+        </clr-radio-wrapper>
+      </clr-radio-container>
       <button class="btn btn-primary margin-top" (click)="newGame()">Начать игру</button>
     </ng-container>
     <ng-container *ngSwitchCase="1">
       <div *ngIf="task">
         <img [src]="task.image" class="task-img">
-        <button *ngFor="let name of task.names" class="btn btn-outline" (click)=answer(name)>{{name}}</button>
+        <clr-datalist-container>
+          <input clrDatalistInput [(ngModel)]="chosenAnswer" placeholder="No label" name="Option"/>
+          <datalist>
+            <option *ngFor="let item of task.names" [value]="item"></option>
+          </datalist>
+        </clr-datalist-container>
+        <button class="btn btn-outline" (click)=answer()>Ответить</button>
       </div>
     </ng-container>
     <div *ngSwitchCase="2" class='margin-top'>
       {{result}}
+      <clr-radio-container clrInline>
+        <label>Уровень сложности</label>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="4" [(ngModel)]="options"/>
+          <label>Легкий</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="10" [(ngModel)]="options"/>
+          <label>Средний</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" required value="20" [(ngModel)]="options"/>
+          <label>Сложный</label>
+        </clr-radio-wrapper>
+      </clr-radio-container>
       <button class="btn btn-primary" (click)="newGame()">Начать снова</button>
     </div>
   </div>

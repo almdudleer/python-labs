@@ -13,7 +13,7 @@ class Guess(Resource):
     def get(self):
         with open("famous.txt") as file:
             people = file.read().splitlines()
-        selected_people = random.sample(people, 4)
+        selected_people = random.sample(people, int(request.args.get('optionsCount')))
         r = requests.get("https://api.qwant.com/api/search/images", params={
             'count': 50,
             'q': selected_people[0],

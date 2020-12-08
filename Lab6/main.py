@@ -6,7 +6,6 @@ from Lab6.config import MONGO_URI
 from Lab6.controller.feed_entries import FeedEntries
 from Lab6.controller.feed_list import FeedList
 from Lab6.controller.guess import Guess
-from Lab6.controller.rpc import rpc_calls
 from Lab6.util.db import mongo
 
 app = Flask(__name__)
@@ -24,7 +23,6 @@ class HelloWorld(Resource):
 api.add_resource(FeedList, "/feed")
 api.add_resource(FeedEntries, "/feed/<feed_id>/entries")
 api.add_resource(Guess, "/guess")
-app.register_blueprint(rpc_calls, url_prefix="/rpc")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -14,8 +14,8 @@ export class GuessService {
   constructor(private http: HttpClient) {
   }
 
-  public getTask(): Observable<Task> {
-    return this.http.get<Task>(this.url);
+  public getTask(optionsCount: number): Observable<Task> {
+    return this.http.get<Task>(`${this.url}?optionsCount=${optionsCount}`);
   }
 
   public checkAnswer(taskId: string, answer: string): Observable<any> {

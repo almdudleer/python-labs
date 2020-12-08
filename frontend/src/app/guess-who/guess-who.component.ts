@@ -12,6 +12,8 @@ export class GuessWhoComponent implements OnInit {
   step = 0;
   task: Task;
   result = '';
+  options: number;
+  chosenAnswer: string;
 
   constructor(private guessService: GuessService) {
   }
@@ -23,14 +25,14 @@ export class GuessWhoComponent implements OnInit {
     this.step = 1;
     this.result = '';
     this.task = null;
-    this.guessService.getTask().subscribe(task => {
+    this.guessService.getTask(this.options).subscribe(task => {
       this.task = task;
     })
   }
 
-  answer(name: string): void {
+  answer(): void {
     this.step = 2;
-    this.guessService.checkAnswer(this.task.id, name).subscribe(res => {
+    this.guessService.checkAnswer(this.task.id, this.chosenAnswer).subscribe(res => {
       this.result = res.result ? 'Всё верно!' : 'Вы ошиблись! Правильный ответ: ' + res.answer;
     }, err => {
       this.result = 'Время вышло!'
